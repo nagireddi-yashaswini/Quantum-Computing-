@@ -1,0 +1,66 @@
+from qiskit.quantum_info import Statevector
+from quantum_gates import (identity_circuit,pauli_x_circuit,pauli_y_circuit,pauli_z_circuit,hadamard_circuit,phase_s_circuit,
+    phase_t_circuit,rx_circuit,ry_circuit,rz_circuit,cnot_circuit,cz_circuit,swap_circuit,toffoli_circuit,bell_circuit,ghz_circuit)
+def test_identity():
+    state = Statevector.from_instruction(identity_circuit())
+    assert abs(state.probabilities()[0] - 1.0) < 1e-9
+def test_pauli_x():
+    state = Statevector.from_instruction(pauli_x_circuit())
+    assert abs(state.probabilities()[1] - 1.0) < 1e-9
+def test_pauli_y():
+    state = Statevector.from_instruction(pauli_y_circuit())
+    assert abs(state.probabilities()[1] - 1.0) < 1e-9
+def test_pauli_z():
+    state = Statevector.from_instruction(pauli_z_circuit())
+    assert abs(state.probabilities()[0] - 1.0) < 1e-9
+def test_hadamard():
+    state = Statevector.from_instruction(hadamard_circuit())
+    probabilities = state.probabilities()
+    assert abs(probabilities[0] - 0.5) < 1e-9
+    assert abs(probabilities[1] - 0.5) < 1e-9
+def test_phase_s():
+    state = Statevector.from_instruction(phase_s_circuit())
+    assert abs(state.probabilities()[0] - 1.0) < 1e-9
+def test_phase_t():
+    state = Statevector.from_instruction(phase_t_circuit())
+    assert abs(state.probabilities()[0] - 1.0) < 1e-9
+def test_rx():
+    state = Statevector.from_instruction(rx_circuit(3.141592653589793 / 2))
+    probabilities = state.probabilities()
+    assert abs(probabilities[0] - 0.5) < 1e-9
+    assert abs(probabilities[1] - 0.5) < 1e-9
+def test_ry():
+    state = Statevector.from_instruction(ry_circuit(3.141592653589793 / 2) )
+    probabilities = state.probabilities()
+    assert abs(probabilities[0] - 0.5) < 1e-9
+    assert abs(probabilities[1] - 0.5) < 1e-9
+def test_rz():
+    state = Statevector.from_instruction(rz_circuit(3.141592653589793 / 2))
+    assert abs(state.probabilities()[0] - 1.0) < 1e-9
+def test_cnot():
+    state = Statevector.from_instruction(cnot_circuit())
+    assert abs(state.probabilities()[0] - 1.0) < 1e-9
+def test_cz():
+    state = Statevector.from_instruction(cz_circuit())
+    assert abs(state.probabilities()[0] - 1.0) < 1e-9
+def test_swap():
+    state = Statevector.from_instruction(swap_circuit())
+    probabilities = state.probabilities()
+    assert abs(probabilities[2] - 1.0) < 1e-9
+def test_toffoli():
+    state = Statevector.from_instruction(toffoli_circuit())
+    probabilities = state.probabilities()
+    assert abs(probabilities[7] - 1.0) < 1e-9
+def test_bell():
+    state = Statevector.from_instruction(bell_circuit())
+    probabilities = state.probabilities()
+    assert abs(probabilities[0] - 0.5) < 1e-9
+    assert abs(probabilities[3] - 0.5) < 1e-9
+def test_ghz():
+    state = Statevector.from_instruction(ghz_circuit())
+
+    probabilities = state.probabilities()
+
+    assert abs(probabilities[0] - 0.5) < 1e-9
+    assert abs(probabilities[7] - 0.5) < 1e-9
+
