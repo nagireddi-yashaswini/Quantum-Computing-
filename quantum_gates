@@ -1,0 +1,77 @@
+from qiskit import QuantumCircuit
+def identity_circuit():
+    qc = QuantumCircuit(1)
+    qc.id(0)
+    return qc
+def pauli_x_circuit():
+    qc = QuantumCircuit(1)
+    qc.x(0)
+    return qc
+def pauli_y_circuit():
+    qc = QuantumCircuit(1)
+    qc.y(0)
+    return qc
+def pauli_z_circuit():
+    qc = QuantumCircuit(1)
+    qc.z(0)
+    return qc
+def hadamard_circuit():
+    qc = QuantumCircuit(1)
+    qc.h(0)
+    return qc
+def phase_s_circuit():
+    qc = QuantumCircuit(1)
+    qc.s(0)
+    return qc
+def phase_t_circuit():
+    qc = QuantumCircuit(1)
+    qc.t(0)
+    return qc
+def rx_circuit(theta):
+    qc = QuantumCircuit(1)
+    qc.rx(theta, 0)
+    return qc
+def ry_circuit(theta):
+    qc = QuantumCircuit(1)
+    qc.ry(theta, 0)
+    return qc
+def rz_circuit(theta):
+    qc = QuantumCircuit(1)
+    qc.rz(theta, 0)
+    return qc
+def measurement_circuit():
+    qc = QuantumCircuit(1, 1)
+    qc.h(0)
+    qc.measure(0, 0)
+    return qc
+def cnot_circuit():
+    qc = QuantumCircuit(2)
+    qc.cx(0, 1)
+    return qc
+def cz_circuit():
+    qc = QuantumCircuit(2)
+    qc.cz(0, 1)
+    return qc
+def swap_circuit():
+    qc = QuantumCircuit(2)
+    qc.x(0)
+    qc.swap(0, 1)
+    return qc
+def toffoli_circuit():
+    qc = QuantumCircuit(3)
+    qc.x(0)
+    qc.x(1)
+    qc.ccx(0, 1, 2)
+    return qc
+def bell_circuit():
+    qc = QuantumCircuit(2)
+    qc.h(0)
+    qc.cx(0, 1)
+    return qc
+def ghz_circuit():
+    qc = QuantumCircuit(3)
+    qc.h(0)
+    qc.cx(0, 1)
+    qc.cx(0, 2)
+    return qc
+
