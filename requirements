@@ -1,0 +1,8 @@
+qiskit==2.5.2
+qiskit-aer
+numpy
+matplotlib
+streamlit==1.62.0
+pytest
+pylatexenc
+pandas
