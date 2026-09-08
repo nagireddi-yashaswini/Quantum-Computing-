@@ -1,0 +1,17 @@
+from qiskit.quantum_info import Statevector
+from qiskit_aer import AerSimulator
+def get_statevector(circuit):
+    circuit_without_measurements = circuit.remove_final_measurements(inplace=False)
+    return Statevector.from_instruction(circuit_without_measurements)
+def simulate_measurements(circuit, shots=1024):
+    measured_circuit = circuit.copy()
+    if measured_circuit.num_clbits == 0:
+        measured_circuit.measure_all()
+    simulator = AerSimulator()
+    result = simulator.run(measured_circuit,shots=shots,seed_simulator=42).result()
+    return result.get_counts()
+def simulate(circuit, shots=1024):
+    statevector = get_statevector(circuit)
+    counts = simulate_measurements(circuit,shots)
+    return statevector, counts
+
